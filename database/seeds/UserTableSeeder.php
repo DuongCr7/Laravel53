@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -14,17 +15,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+	    $limit = 10;
 
-	    DB::table('users')->insert([
-		    [
-			    'id'            => 1,
-			    'name'      => 'Admin',
-			    'email'         => 'admin@gmail.com',
-			    'password'      => Hash::make('12345678'),
-			    'created_at'    => Carbon::now(),
-			    'updated_at'    => Carbon::now()
-		    ],
-
-	    ]);
+	    for ($i = 0; $i < $limit; $i++) {
+		    factory(App\Entities\User::class)->create();
+	    }
     }
 }
