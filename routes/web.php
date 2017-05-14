@@ -20,7 +20,7 @@ Route::get('/login', ['as' => 'admin.login', 'uses' => 'Admin\LoginController@lo
 Route::post('/login', ['as'=>'admin.login', 'uses'=>'Admin\LoginController@postLogin']);
 Route::post('/logout', ['as' =>'admin.logout', 'uses' => 'Admin\LoginController@logout']);
 
-Route::group(['middleware' => 'auth:admin'], function(){
+Route::group(['middleware' => ['auth:admin', 'xss']], function(){
 	Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
 
 		Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
