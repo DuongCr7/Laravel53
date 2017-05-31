@@ -45,7 +45,9 @@ class LoginController extends Controller
 			return redirect()->back()->withErrors(['error' => 'Email or password wrong. Please enter right information.']);
 
 		} catch (ValidatorException $e) {
+			// dd($e->getMessage());
 			return redirect()->back()->withInput($request->input())->withErrors($e->getMessageBag());
+
 		} catch (\Exception $e) {
 			Log::error('Login error : ' . $e->get());
 

@@ -16,4 +16,7 @@ class LoginValidator extends LaravelValidator
 		    'password' => 'required|min:8'
 	    ]
    ];
+   protected $messages = [
+    'email.required' => 'The sladjsa field is required.',
+];
 }
